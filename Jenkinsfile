@@ -1,20 +1,17 @@
 pipeline {
   agent {
-    docker {
-      image 'node:lts-alpine3.17'
-      args '-p 3000:3000'
+    node {
+      label 'ubuntu-node1'
     }
-
+  }
+  environment {
+    CI = 'true'
   }
   stages {
     stage('Build') {
       steps {
-        sh 'npm install'
+        sh 'echo this'
       }
     }
-
-  }
-  environment {
-    CI = 'true'
   }
 }
